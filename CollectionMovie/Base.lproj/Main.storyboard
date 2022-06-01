@@ -44,6 +44,9 @@
                                                         <real key="value" value="12"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="estrenosBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PWl-On-bZD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pvu-R1-LfX">
                                                 <rect key="frame" x="126.5" y="0.0" width="121" height="35"/>
@@ -137,11 +140,133 @@
                         <outlet property="collectionViewMovie" destination="k9f-KW-jBy" id="QrU-C7-XbD"/>
                         <outlet property="searchbarPeliculas" destination="feC-kk-4yU" id="3zV-5Q-cCy"/>
                         <segue destination="glz-WH-1dJ" kind="show" identifier="verDetalle" id="zt3-hG-3UT"/>
+                        <segue destination="aZo-8L-GFf" kind="show" identifier="estrenos" id="Bpt-TE-hbp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913.04347826086962" y="37.5"/>
+        </scene>
+        <!--Estrenos View Controller-->
+        <scene sceneID="8p1-8k-62H">
+            <objects>
+                <viewController id="aZo-8L-GFf" customClass="EstrenosViewController" customModule="CollectionMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hE4-7r-eaK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FxH-RR-Una">
+                                <rect key="frame" x="10" y="88" width="394" height="744"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peliculas de Estreno" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhY-bs-ueW">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="2ur-cu-KUE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AEB-42-DTx">
+                                        <rect key="frame" x="0.0" y="65" width="394" height="257"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="257" id="igJ-Rm-QYb"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1iY-ur-qaM">
+                                            <size key="itemSize" width="374" height="220"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EstrenosCollectionViewCell" id="6cS-EE-9Dw" customClass="EstrenosCollectionViewCell" customModule="CollectionMovie" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="18.5" width="374" height="220"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wQb-XD-lnH">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="220"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nilo" translatesAutoresizingMaskIntoConstraints="NO" id="zgX-Gm-OkA">
+                                                            <rect key="frame" x="8" y="0.0" width="358" height="220"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="220" id="4p5-bb-rOH"/>
+                                                                <constraint firstAttribute="width" constant="358" id="9O1-wn-acV"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="15"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="zgX-Gm-OkA" firstAttribute="top" secondItem="wQb-XD-lnH" secondAttribute="top" id="86B-RK-rAo"/>
+                                                        <constraint firstItem="zgX-Gm-OkA" firstAttribute="leading" secondItem="wQb-XD-lnH" secondAttribute="leading" id="V91-Kg-nwh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zgX-Gm-OkA" secondAttribute="trailing" id="lt4-Vb-WYK"/>
+                                                        <constraint firstAttribute="bottom" secondItem="zgX-Gm-OkA" secondAttribute="bottom" id="lxE-0J-T3U"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="374" height="220"/>
+                                                <connections>
+                                                    <outlet property="peliculaEstrenoIV" destination="zgX-Gm-OkA" id="qoB-4d-KQc"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="poU-BB-RYQ">
+                                        <rect key="frame" x="0.0" y="332" width="394" height="26"/>
+                                        <color key="pageIndicatorTintColor" systemColor="systemGreenColor"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.10486667600000001" green="0.42031750080000002" blue="0.70682305099999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </pageControl>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pelis" translatesAutoresizingMaskIntoConstraints="NO" id="Tje-pO-of3">
+                                        <rect key="frame" x="0.0" y="368" width="394" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="2GK-dL-mJB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yts-dZ-3vq">
+                                        <rect key="frame" x="0.0" y="558" width="394" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aym-PB-5jn"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Ver ahora">
+                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle0"/>
+                                        </buttonConfiguration>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7F-bH-wHx">
+                                        <rect key="frame" x="0.0" y="618" width="394" height="126"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Uoq-Ha-jcj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Uoq-Ha-jcj" firstAttribute="trailing" secondItem="FxH-RR-Una" secondAttribute="trailing" constant="10" id="CtK-BT-GB7"/>
+                            <constraint firstItem="FxH-RR-Una" firstAttribute="top" secondItem="Uoq-Ha-jcj" secondAttribute="top" id="LcM-fq-BLY"/>
+                            <constraint firstItem="Uoq-Ha-jcj" firstAttribute="bottom" secondItem="FxH-RR-Una" secondAttribute="bottom" constant="30" id="dze-gA-xPO"/>
+                            <constraint firstItem="FxH-RR-Una" firstAttribute="leading" secondItem="hE4-7r-eaK" secondAttribute="leading" constant="10" id="s2i-zS-Bid"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5o9-6a-AKg"/>
+                    <connections>
+                        <outlet property="collectionEstrenos" destination="AEB-42-DTx" id="Og8-DM-btX"/>
+                        <outlet property="pageControlPeliculas" destination="poU-BB-RYQ" id="fXn-tU-lZs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WeI-mN-gck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1715.9420289855075" y="-660.26785714285711"/>
         </scene>
         <!--Vista Detallada View Controller-->
         <scene sceneID="HZe-pO-xU2">
@@ -295,6 +420,8 @@
     <resources>
         <image name="batman" width="720" height="1020"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="nilo" width="720" height="1020"/>
+        <image name="pelis" width="798" height="938"/>
         <image name="person.crop.square.fill.and.at.rectangle" catalog="system" width="128" height="93"/>
         <image name="top" width="720" height="1020"/>
         <systemColor name="labelColor">
@@ -302,6 +429,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
             <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -12,6 +12,9 @@ class MoviesViewController: UIViewController {
     var peliculaVer: Movie?
     let animationDuration: Double = 0.3
     let delayBase: Double = 0.3
+    
+    var timer: Timer?
+    var indiceActual = 0
 
     @IBOutlet weak var searchbarPeliculas: UISearchBar!
     @IBOutlet weak var collectionViewMovie: UICollectionView!
@@ -28,7 +31,27 @@ class MoviesViewController: UIViewController {
         
         collectionViewMovie.delegate = self
         collectionViewMovie.dataSource = self
+        
+        //Scroll automatico
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(cambiar), userInfo: nil, repeats: true)
     }
+    
+    //Timer
+    @objc func cambiar() {
+        if indiceActual < peliculasFiltradas.count-1{
+             indiceActual = indiceActual + 1
+        } else {
+            indiceActual = 0
+        }
+        collectionViewMovie.scrollToItem(at: IndexPath(item: indiceActual, section: 0), at: .right, animated: true)
+    }
+    
+    @IBAction func estrenosBtn(_ sender: UIButton) {
+        print("Estrenos")
+        performSegue(withIdentifier: "estrenos", sender: self)
+    }
+    
+    
 }
  // MARK: - SearchBar
 extension MoviesViewController: UISearchBarDelegate {
@@ -78,11 +101,14 @@ extension MoviesViewController : UICollectionViewDelegate, UICollectionViewDataS
         
         return peliculasFiltradas.count
     }
+    
+    
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout{
+    // MARK: - Tamaño de la celda
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 130, height: 190)
+        return CGSize(width: 110, height: 190)
     }
     
     
@@ -91,13 +117,19 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout{
         return true
     }
     
+    
+    // MARK: - Seleccionar una celda
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
         peliculaVer = peliculasFiltradas[indexPath.row]
         performSegue(withIdentifier: "verDetalle", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vistaDetallada = segue.destination as! VistaDetalladaViewController
-        vistaDetallada.peliculaMostrar = peliculaVer
+        if segue.identifier == "verDetalle" {
+            let vistaDetallada = segue.destination as! VistaDetalladaViewController
+            vistaDetallada.peliculaMostrar = peliculaVer
+        }
+        
     }
 }
