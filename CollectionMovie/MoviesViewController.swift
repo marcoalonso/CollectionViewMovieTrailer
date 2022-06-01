@@ -10,6 +10,9 @@ import UIKit
 class MoviesViewController: UIViewController {
     
     var peliculaVer: Movie?
+    
+    let animationDuration: Double = 0.3
+    let delayBase: Double = 0.3
 
     @IBOutlet weak var collectionViewMovie: UICollectionView!
     
@@ -32,10 +35,22 @@ extension MoviesViewController : UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let celda = collectionViewMovie.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
+//        celda.alpha = 0
         celda.configurar(peli: movies[indexPath.row])
         celda.movieImage.layer.cornerRadius = 10
         return celda
     }
+    
+    
+    //Animacion
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//
+//        let delay = sqrt(Double(indexPath.row)) * delayBase
+//
+//        UIView.animate(withDuration: animationDuration, delay: delay, options: .curveEaseOut, animations: {
+//            cell.alpha = 1
+//          })
+//    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

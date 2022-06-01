@@ -13,6 +13,8 @@ class VistaDetalladaViewController: UIViewController {
     
     var favorito: Bool = true
     
+    
+    
     @IBOutlet weak var favoritoBtn: UIBarButtonItem!
     
     @IBOutlet weak var tituloPeliculaLabel: UILabel!
@@ -27,6 +29,16 @@ class VistaDetalladaViewController: UIViewController {
         descripcionPeliculaLabel.text = peliculaMostrar?.descripcion ?? ""
         imagenPelicualLabel.image = peliculaMostrar?.imagen ?? UIImage(named: "display.trianglebadge.exclamationmark")
         imagenPelicualLabel.layer.cornerRadius = 13
+    }
+    
+    
+    @IBAction func verTrailerBtn(_ sender: UIButton) {
+        performSegue(withIdentifier: "verTrailer", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let verTrailer = segue.destination as! TrailerViewController
+        verTrailer.trailerURL = peliculaMostrar?.urlTrailer ?? "https://www.youtube.com/channel/UCknu6vH4a8tXLFpM_uQ-hBA"
     }
     
 

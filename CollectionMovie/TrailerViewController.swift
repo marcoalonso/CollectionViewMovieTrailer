@@ -6,29 +6,29 @@
 //
 
 import UIKit
-import WebKit
+import youtube_ios_player_helper
 
-class TrailerViewController: UIViewController {
+class TrailerViewController: UIViewController, YTPlayerViewDelegate {
     
     
-    @IBOutlet weak var verViedeoTrailer: WKWebView!
+    @IBOutlet weak var reproductorYoutubeView: YTPlayerView!
     
+    var trailerURL: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        reproductorYoutubeView.delegate = self
+        reproductorYoutubeView.load(withVideoId: trailerURL ?? "yd2Go8_cnds")
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        reproductorYoutubeView.playVideo()
     }
-    */
+    
+    @IBAction func verCanalCreador(_ sender: UIBarButtonItem) {
+        reproductorYoutubeView.load(withVideoId: "AofIvEJaZjg")
+    }
+    
 
 }
