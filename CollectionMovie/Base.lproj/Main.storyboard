@@ -135,6 +135,7 @@
                     <navigationItem key="navigationItem" title="CineMovie" id="MUA-Ke-w8q"/>
                     <connections>
                         <outlet property="collectionViewMovie" destination="k9f-KW-jBy" id="QrU-C7-XbD"/>
+                        <outlet property="searchbarPeliculas" destination="feC-kk-4yU" id="3zV-5Q-cCy"/>
                         <segue destination="glz-WH-1dJ" kind="show" identifier="verDetalle" id="zt3-hG-3UT"/>
                     </connections>
                 </viewController>
